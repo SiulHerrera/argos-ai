@@ -17,9 +17,6 @@
     #personaSelect:hover { border-color: #71717a; }
     #personaSelect:disabled { opacity: 0.6; cursor: not-allowed; }
     
-    /* Contador de Tokens */
-    .token-counter { font-size: 11px; color: #a1a1aa; font-weight: 500; background: #27272a; padding: 4px 8px; border-radius: 6px; border: 1px solid #3f3f46; white-space: nowrap; }
-
     .brand { font-weight: 500; font-size: 15px; color: #a1a1aa; letter-spacing: 0.3px; text-align: center; }
     
     .header-actions { display: flex; align-items: center; gap: 8px; }
@@ -38,18 +35,13 @@
       to { opacity: 1; transform: translateY(0); }
     }
     
-    .message { display: flex; flex-direction: column; line-height: 1.6; font-size: 15px; word-break: break-word; animation: fadeIn 0.3s ease-out forwards; position: relative; }
-    .message.user { align-self: flex-end; background-color: #27272a; color: #f4f4f5; padding: 12px 18px; border-radius: 18px; max-width: 75%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding-right: 45px; }
+    .message { display: flex; flex-direction: column; line-height: 1.6; font-size: 15px; word-break: break-word; animation: fadeIn 0.3s ease-out forwards; }
+    .message.user { align-self: flex-end; background-color: #27272a; color: #f4f4f5; padding: 12px 18px; border-radius: 18px; max-width: 75%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     .message.model { align-self: flex-start; background-color: transparent; color: #e4e4e7; padding: 4px 0; max-width: 100%; width: 100%; }
     .message .sender { font-size: 13px; color: #a1a1aa; margin-bottom: 6px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
     .message.user .sender { display: none; }
     .sender-icon { width: 20px; height: 20px; background-color: #d4d4d8; color: #18181b; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 12px; font-weight: bold; flex-shrink: 0; }
     
-    /* Botón de Edición */
-    .edit-btn { position: absolute; right: 12px; top: 10px; background: transparent; border: none; color: #a1a1aa; cursor: pointer; display: none; font-size: 14px; padding: 4px; border-radius: 6px; transition: 0.2s; }
-    .edit-btn:hover { color: #e4e4e7; background-color: #3f3f46; }
-    .message.user:hover .edit-btn { display: block; }
-
     .message pre { background-color: #09090b; padding: 14px; overflow-x: auto; margin: 12px 0; border-radius: 8px; border: 1px solid #27272a; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13.5px; }
     .message code { background-color: #27272a; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13.5px; color: #38bdf8; }
     .message pre code { background-color: transparent; padding: 0; color: #e4e4e7; }
@@ -61,17 +53,10 @@
     textarea#userInput { flex: 1; background-color: transparent; border: none; padding: 6px 8px; color: #f4f4f5; font-size: 15px; resize: none; height: 38px; max-height: 160px; outline: none; font-family: inherit; line-height: 1.5; }
     textarea#userInput::placeholder { color: #71717a; }
     
-    /* Botones de Input (Micrófono y Enviar) */
-    .icon-btn { background-color: transparent; color: #a1a1aa; border: none; border-radius: 8px; width: 34px; height: 34px; font-size: 16px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-bottom: 2px; }
-    .icon-btn:hover { background-color: #3f3f46; color: #e4e4e7; }
-    .icon-btn.recording { color: #ef4444; animation: pulse 1.5s infinite; }
-    
-    .input-wrapper #sendBtn { background-color: #e4e4e7; color: #18181b; border: none; border-radius: 8px; width: 34px; height: 34px; font-weight: 600; font-size: 16px; cursor: pointer; transition: background-color 0.2s, transform 0.1s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-bottom: 2px; }
-    .input-wrapper #sendBtn:hover { background-color: #ffffff; }
-    .input-wrapper #sendBtn:active { transform: scale(0.95); }
-    .input-wrapper #sendBtn:disabled { background-color: #3f3f46; color: #71717a; cursor: not-allowed; transform: none; }
-    
-    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.1); } 100% { opacity: 1; transform: scale(1); } }
+    .input-wrapper button { background-color: #e4e4e7; color: #18181b; border: none; border-radius: 8px; width: 34px; height: 34px; font-weight: 600; font-size: 16px; cursor: pointer; transition: background-color 0.2s, transform 0.1s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-bottom: 2px; }
+    .input-wrapper button:hover { background-color: #ffffff; }
+    .input-wrapper button:active { transform: scale(0.95); }
+    .input-wrapper button:disabled { background-color: #3f3f46; color: #71717a; cursor: not-allowed; transform: none; }
     
     .typing-container { display: flex; align-items: center; gap: 8px; padding: 8px 0; color: #a1a1aa; font-size: 13.5px; font-style: italic; }
     .typing-indicator { display: flex; gap: 4px; align-items: center; }
@@ -80,7 +65,7 @@
     .dot:nth-child(2) { animation-delay: -0.16s; }
     @keyframes bounce { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
     
-    @media (max-width: 600px) { header { padding: 0 10px; } .persona-container { width: 100px; } #personaSelect { font-size: 11px; padding: 4px; } .token-counter { display: none; } .chat-box { padding: 20px 15px 100px 15px; } .message.user { max-width: 90%; } .input-wrapper { width: calc(100% - 20px); bottom: 15px; padding: 8px 10px; } textarea#userInput { font-size: 16px; } }
+    @media (max-width: 600px) { header { padding: 0 10px; } .persona-container { width: 100px; } #personaSelect { font-size: 11px; padding: 4px; } .chat-box { padding: 20px 15px 100px 15px; } .message.user { max-width: 90%; } .input-wrapper { width: calc(100% - 20px); bottom: 15px; padding: 8px 10px; } textarea#userInput { font-size: 16px; } }
   </style>
 </head>
 <body>
@@ -97,15 +82,13 @@
             <option value="creative">Creador Creativo</option>
           </select>
         </div>
-        <div id="tokenCounter" class="token-counter">~0 tokens</div>
       </div>
       <div class="brand">Argos</div>
       <div class="header-actions">
-        <button id="ttsToggle" class="action-btn" onclick="toggleTTS()">🔇 Voz Off</button>
         <button class="action-btn" onclick="exportChat()">💾 Exportar</button>
         <button class="action-btn" onclick="document.getElementById('importFile').click()">📂 Cargar</button>
         <input type="file" id="importFile" style="display:none" accept=".json" onchange="importChat(event)">
-        <button class="clear-btn" onclick="clearChat()" title="Borrar Historial"> 🗑️</button>
+        <button class="clear-btn" onclick="clearChat()"> 🗑️</button>
       </div>
     </header>
     
@@ -115,7 +98,6 @@
     
     <div class="input-wrapper">
       <div class="input-area">
-        <button id="micBtn" class="icon-btn" onclick="toggleDictation()" title="Dictar por voz">🎤</button>
         <textarea id="userInput" placeholder="Escribe tu mensaje aquí..." rows="1"></textarea>
         <button id="sendBtn" onclick="handleSend()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -135,11 +117,6 @@
     const userInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
     const personaSelect = document.getElementById('personaSelect');
-    
-    // Variables de Voz
-    let ttsEnabled = false;
-    let recognition;
-    let isRecording = false;
 
     const systemInstructions = {
       default: "Eres Argos, un asistente de IA empático, natural y conversacional. Actúa como un compañero inteligente dispuesto a escuchar y ayudar. Evita respuestas robóticas.",
@@ -150,15 +127,8 @@
       creative: "Eres Argos en modo Creador Creativo. Tu enfoque es la narrativa, la inspiración y la lluvia de ideas. Eres imaginativo y usas un lenguaje enriquecedor."
     };
 
-    function updateTokenCounter() {
-      const totalChars = chatHistory.reduce((acc, msg) => acc + msg.parts[0].text.length, 0);
-      const tokens = Math.ceil(totalChars / 4); // Aproximación: 1 token = 4 caracteres
-      document.getElementById('tokenCounter').textContent = `~${tokens} tokens`;
-    }
-
     function saveToLocalStorage() {
       localStorage.setItem('argos_chat_history', JSON.stringify(chatHistory));
-      updateTokenCounter();
     }
 
     function loadFromLocalStorage() {
@@ -170,7 +140,6 @@
             chatHistory = history;
             chatBox.innerHTML = '';
             chatHistory.forEach(msg => appendMessage(msg.role, msg.parts[0].text, false));
-            updateTokenCounter();
           } else {
              showWelcome();
           }
@@ -184,7 +153,7 @@
 
     function showWelcome() {
        chatBox.innerHTML = `
-        <div class="message model welcome-msg">
+        <div class="message model">
           <div class="sender"> <span class="sender-icon">A</span> Argos </div>
           <div class="message-content">¡Hola! Soy Argos. Estoy aquí para escucharte, aprender contigo y ayudarte en lo que necesites. ¿De qué te gustaría hablar hoy?</div>
         </div>
@@ -196,7 +165,6 @@
         chatHistory = [];
         localStorage.removeItem('argos_chat_history');
         showWelcome();
-        updateTokenCounter();
       }
     }
 
@@ -231,93 +199,6 @@
       reader.readAsText(file);
     }
 
-    // Funciones de Voz (Dictado y TTS)
-    function initSpeechRecognition() {
-      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-        const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-        recognition = new SpeechRec();
-        recognition.lang = 'es-ES';
-        recognition.continuous = false;
-        recognition.interimResults = false;
-
-        recognition.onresult = (event) => {
-          let finalTranscript = event.results[0][0].transcript;
-          if (finalTranscript) {
-            userInput.value += (userInput.value ? ' ' : '') + finalTranscript;
-            userInput.style.height = 'auto';
-            userInput.style.height = (userInput.scrollHeight) + 'px';
-          }
-        };
-
-        recognition.onend = () => stopDictation();
-      }
-    }
-
-    function toggleDictation() {
-      if (!recognition) initSpeechRecognition();
-      if (!recognition) {
-        alert("El dictado por voz no está soportado en este navegador.");
-        return;
-      }
-      
-      if (isRecording) {
-        stopDictation();
-      } else {
-        try {
-          recognition.start();
-          isRecording = true;
-          document.getElementById('micBtn').classList.add('recording');
-        } catch(e) {
-          console.error("Error al iniciar grabación:", e);
-        }
-      }
-    }
-
-    function stopDictation() {
-      isRecording = false;
-      if (recognition) recognition.stop();
-      document.getElementById('micBtn').classList.remove('recording');
-    }
-
-    function toggleTTS() {
-      ttsEnabled = !ttsEnabled;
-      document.getElementById('ttsToggle').innerHTML = ttsEnabled ? '🔊 Voz On' : '🔇 Voz Off';
-      if (!ttsEnabled) window.speechSynthesis.cancel();
-    }
-
-    function speakText(text) {
-      if (!ttsEnabled) return;
-      window.speechSynthesis.cancel();
-      // Limpiamos formato markdown básico para la lectura
-      let cleanText = text.replace(/[*#_`]/g, ''); 
-      const utterance = new SpeechSynthesisUtterance(cleanText);
-      utterance.lang = 'es-ES';
-      window.speechSynthesis.speak(utterance);
-    }
-
-    // Lógica de Edición de Mensajes
-    function editMessage(index) {
-      if (index < 0 || index >= chatHistory.length) return;
-      const textToEdit = chatHistory[index].parts[0].text;
-      
-      // Cortamos el historial hasta el punto del mensaje editado
-      chatHistory = chatHistory.slice(0, index);
-      saveToLocalStorage();
-      
-      // Re-renderizamos la vista
-      chatBox.innerHTML = '';
-      if (chatHistory.length === 0) {
-          showWelcome();
-      } else {
-          chatHistory.forEach(msg => appendMessage(msg.role, msg.parts[0].text, false));
-      }
-      
-      userInput.value = textToEdit;
-      userInput.style.height = 'auto';
-      userInput.style.height = (userInput.scrollHeight) + 'px';
-      userInput.focus();
-    }
-
     userInput.addEventListener('input', function() {
       this.style.height = '38px';
       this.style.height = (this.scrollHeight) + 'px';
@@ -347,37 +228,20 @@
       msgDiv.className = `message ${role}`;
       const senderDiv = document.createElement('div');
       senderDiv.className = 'sender';
-      
       if (role === 'model') {
         senderDiv.innerHTML = `<span class="sender-icon">A</span> Argos`;
       } else {
         senderDiv.textContent = 'Tú';
-        
-        // Agregar botón de editar al mensaje del usuario
-        const editBtn = document.createElement('button');
-        editBtn.className = 'edit-btn';
-        editBtn.innerHTML = '✏️';
-        editBtn.title = 'Editar y reenviar';
-        editBtn.onclick = () => {
-          // Filtrar solo los mensajes válidos para encontrar el index correcto en chatHistory
-          const validMsgs = Array.from(chatBox.querySelectorAll('.message:not(.welcome-msg):not(#loadingIndicator)'));
-          const myIndex = validMsgs.indexOf(msgDiv);
-          if (myIndex !== -1) editMessage(myIndex);
-        };
-        msgDiv.appendChild(editBtn);
       }
-      
       const contentDiv = document.createElement('div');
       contentDiv.className = 'message-content';
       contentDiv.innerHTML = formatText(text);
       msgDiv.appendChild(senderDiv);
       msgDiv.appendChild(contentDiv);
       chatBox.appendChild(msgDiv);
-      
       setTimeout(() => {
         chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
       }, 50);
-      
       if (save) saveToLocalStorage();
       return msgDiv;
     }
@@ -407,19 +271,13 @@
     async function handleSend() {
       const text = userInput.value.trim();
       if (!text) return;
-      
-      if (isRecording) stopDictation(); // Detener micro si se envía
-      
       appendMessage('user', text);
       chatHistory.push({ role: 'user', parts: [{ text: text }] });
-      saveToLocalStorage(); // Fuerza actualización del contador
-      
       userInput.value = '';
       userInput.style.height = '38px';
       sendBtn.disabled = true;
       personaSelect.disabled = true;
       showTypingIndicator();
-      
       try {
         const selectedPersona = personaSelect.value;
         const systemPromptText = systemInstructions[selectedPersona] || systemInstructions.default;
@@ -430,27 +288,21 @@
           headers: { 'Content-Type': 'application/json' }, 
           body: JSON.stringify({ system_instruction: { parts: [{ text: systemPromptText }] }, contents: apiHistory }) 
         });
-        
         removeTypingIndicator();
         if (!response.ok) throw new Error('Error');
         const data = await response.json();
         const modelText = data.candidates[0].content.parts[0].text;
-        
         chatHistory.push({ role: 'model', parts: [{ text: modelText }] });
         appendMessage('model', modelText);
-        speakText(modelText); // Lee el texto si el TTS está activo
-        
       } catch (error) {
         removeTypingIndicator();
-        appendMessage('model', 'Lo siento, tuve un problema al procesar la respuesta.');
+        appendMessage('model', 'Lo siento, tuve un problema.');
       } finally {
         sendBtn.disabled = false;
         personaSelect.disabled = false;
         if (window.innerWidth > 600) userInput.focus();
       }
     }
-    
-    // Inicialización
     loadFromLocalStorage();
   </script>
 </body>
