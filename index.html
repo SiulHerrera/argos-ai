@@ -17,10 +17,7 @@
     #personaSelect:hover { border-color: #71717a; }
     #personaSelect:disabled { opacity: 0.6; cursor: not-allowed; }
     
-    .brand-container { display: flex; flex-direction: column; align-items: center; }
     .brand { font-weight: 500; font-size: 15px; color: #a1a1aa; letter-spacing: 0.3px; text-align: center; }
-    /* Nuevo estilo para el contador de tokens */
-    .token-counter { font-size: 10px; color: #71717a; text-align: center; margin-top: 2px; }
     
     .header-actions { display: flex; align-items: center; gap: 8px; }
     
@@ -29,7 +26,7 @@
     .clear-btn { background-color: #27272a; color: #ef4444; border: 1px solid #3f3f46; border-radius: 6px; padding: 5px 10px; font-size: 12px; font-weight: 500; cursor: pointer; transition: background-color 0.2s; }
     .clear-btn:hover { background-color: #3f3f46; color: #f87171; }
     
-    .chat-box { flex: 1; overflow-y: auto; padding: 32px 20px 130px 20px; display: flex; flex-direction: column; gap: 24px; scroll-behavior: smooth; max-width: 800px; margin: 0 auto; width: 100%; }
+    .chat-box { flex: 1; overflow-y: auto; padding: 32px 20px 140px 20px; display: flex; flex-direction: column; gap: 24px; scroll-behavior: smooth; max-width: 800px; margin: 0 auto; width: 100%; }
     .chat-box::-webkit-scrollbar { width: 6px; }
     .chat-box::-webkit-scrollbar-thumb { background-color: #3f3f46; border-radius: 3px; }
     
@@ -38,52 +35,46 @@
       to { opacity: 1; transform: translateY(0); }
     }
     
-    .message { display: flex; flex-direction: column; line-height: 1.6; font-size: 15px; word-break: break-word; animation: fadeIn 0.3s ease-out forwards; position: relative; }
+    .message { display: flex; flex-direction: column; line-height: 1.6; font-size: 15px; word-break: break-word; animation: fadeIn 0.3s ease-out forwards; }
     .message.user { align-self: flex-end; background-color: #27272a; color: #f4f4f5; padding: 12px 18px; border-radius: 18px; max-width: 75%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     .message.model { align-self: flex-start; background-color: transparent; color: #e4e4e7; padding: 4px 0; max-width: 100%; width: 100%; }
-    
-    /* Estilos actualizados para cabecera de mensaje y botones de acción */
-    .message .sender { font-size: 13px; color: #a1a1aa; margin-bottom: 6px; font-weight: 500; display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+    .message .sender { font-size: 13px; color: #a1a1aa; margin-bottom: 6px; font-weight: 500; display: flex; align-items: center; gap: 6px; }
     .message.user .sender { display: none; }
-    .sender-left { display: flex; align-items: center; gap: 6px; }
-    .sender-actions { display: flex; gap: 6px; opacity: 0.7; transition: opacity 0.2s; }
-    .sender-actions:hover { opacity: 1; }
-    .msg-action-icon { background: none; border: none; color: #a1a1aa; cursor: pointer; font-size: 12px; padding: 2px 4px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; }
-    .msg-action-icon:hover { background-color: #3f3f46; color: #e4e4e7; }
     .sender-icon { width: 20px; height: 20px; background-color: #d4d4d8; color: #18181b; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 12px; font-weight: bold; flex-shrink: 0; }
     
     .message pre { background-color: #09090b; padding: 14px; overflow-x: auto; margin: 12px 0; border-radius: 8px; border: 1px solid #27272a; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13.5px; }
     .message code { background-color: #27272a; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13.5px; color: #38bdf8; }
     .message pre code { background-color: transparent; padding: 0; color: #e4e4e7; }
     
-    /* Botón de editar para el usuario */
-    .user-actions { display: flex; justify-content: flex-end; gap: 6px; margin-top: 4px; font-size: 11px; opacity: 0.6; }
-    .user-actions:hover { opacity: 1; }
-    .user-action-btn { background: none; border: none; color: #a1a1aa; cursor: pointer; font-size: 11px; text-decoration: underline; }
-    .user-action-btn:hover { color: #f4f4f5; }
-
+    /* Nuevos estilos para Acciones (Editar/Escuchar) */
+    .msg-actions { display: flex; gap: 12px; margin-top: 8px; justify-content: flex-end; opacity: 0.7; transition: opacity 0.2s; }
+    .message:hover .msg-actions { opacity: 1; }
+    .msg-action-btn { background: none; border: none; color: #a1a1aa; cursor: pointer; font-size: 12px; display: flex; align-items: center; gap: 4px; padding: 2px 0; }
+    .msg-action-btn:hover { color: #38bdf8; }
+    .message.user .msg-actions { margin-top: 4px; }
+    
     .input-wrapper { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); width: calc(100% - 40px); max-width: 760px; background-color: #27272a; border: 1px solid #3f3f46; border-radius: 16px; padding: 10px 12px; display: flex; flex-direction: column; box-shadow: 0 4px 20px rgba(0,0,0,0.4); transition: border-color 0.2s; }
     .input-wrapper:focus-within { border-color: #71717a; }
     
-    .input-area { display: flex; gap: 8px; align-items: flex-end; }
+    .input-area { display: flex; gap: 10px; align-items: flex-end; }
+    
+    /* Botón de micrófono */
+    .mic-btn { background: transparent; border: none; color: #a1a1aa; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; transition: background-color 0.2s, color 0.2s; margin-bottom: 2px;}
+    .mic-btn:hover { background-color: #3f3f46; color: #e4e4e7; }
+    .mic-btn.recording { color: #ef4444; animation: pulse 1.5s infinite; }
+    
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+    
     textarea#userInput { flex: 1; background-color: transparent; border: none; padding: 6px 8px; color: #f4f4f5; font-size: 15px; resize: none; height: 38px; max-height: 160px; outline: none; font-family: inherit; line-height: 1.5; }
     textarea#userInput::placeholder { color: #71717a; }
     
-    /* Botones de entrada (Microfono y Enviar) */
-    .tool-btn { background-color: #3f3f46; color: #a1a1aa; border: none; border-radius: 8px; width: 34px; height: 34px; cursor: pointer; transition: background-color 0.2s, color 0.2s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-bottom: 2px; }
-    .tool-btn:hover { background-color: #52525b; color: #e4e4e7; }
-    .tool-btn.listening { background-color: #ef4444; color: #fff; animation: pulse 1.5s infinite; }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
-
-    .input-wrapper button.send-btn { background-color: #e4e4e7; color: #18181b; border: none; border-radius: 8px; width: 34px; height: 34px; font-weight: 600; font-size: 16px; cursor: pointer; transition: background-color 0.2s, transform 0.1s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-bottom: 2px; }
-    .input-wrapper button.send-btn:hover { background-color: #ffffff; }
-    .input-wrapper button.send-btn:active { transform: scale(0.95); }
-    .input-wrapper button.send-btn:disabled { background-color: #3f3f46; color: #71717a; cursor: not-allowed; transform: none; }
+    .input-wrapper .send-btn { background-color: #e4e4e7; color: #18181b; border: none; border-radius: 8px; width: 34px; height: 34px; font-weight: 600; font-size: 16px; cursor: pointer; transition: background-color 0.2s, transform 0.1s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-bottom: 2px; }
+    .input-wrapper .send-btn:hover { background-color: #ffffff; }
+    .input-wrapper .send-btn:active { transform: scale(0.95); }
+    .input-wrapper .send-btn:disabled { background-color: #3f3f46; color: #71717a; cursor: not-allowed; transform: none; }
+    
+    /* Contador de estadísticas */
+    .stats-counter { text-align: center; font-size: 11px; color: #71717a; margin-top: 8px; font-variant-numeric: tabular-nums; }
     
     .typing-container { display: flex; align-items: center; gap: 8px; padding: 8px 0; color: #a1a1aa; font-size: 13.5px; font-style: italic; }
     .typing-indicator { display: flex; gap: 4px; align-items: center; }
@@ -92,7 +83,7 @@
     .dot:nth-child(2) { animation-delay: -0.16s; }
     @keyframes bounce { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
     
-    @media (max-width: 600px) { header { padding: 0 10px; } .persona-container { width: 100px; } #personaSelect { font-size: 11px; padding: 4px; } .chat-box { padding: 20px 15px 100px 15px; } .message.user { max-width: 90%; } .input-wrapper { width: calc(100% - 20px); bottom: 15px; padding: 8px 10px; } textarea#userInput { font-size: 16px; } }
+    @media (max-width: 600px) { header { padding: 0 10px; } .persona-container { width: 100px; } #personaSelect { font-size: 11px; padding: 4px; } .chat-box { padding: 20px 15px 120px 15px; } .message.user { max-width: 90%; } .input-wrapper { width: calc(100% - 20px); bottom: 15px; padding: 8px 10px; } textarea#userInput { font-size: 16px; } }
   </style>
 </head>
 <body>
@@ -110,10 +101,7 @@
           </select>
         </div>
       </div>
-      <div class="brand-container">
-        <div class="brand">Argos</div>
-        <div class="token-counter" id="tokenCounter">Tokens est: 0</div>
-      </div>
+      <div class="brand">Argos</div>
       <div class="header-actions">
         <button class="action-btn" onclick="exportChat()">💾 Exportar</button>
         <button class="action-btn" onclick="document.getElementById('importFile').click()">📂 Cargar</button>
@@ -128,16 +116,8 @@
     
     <div class="input-wrapper">
       <div class="input-area">
-        <textarea id="userInput" placeholder="Escribe tu mensaje o usa el micrófono..." rows="1"></textarea>
-        <!-- Botón de Micrófono -->
-        <button id="micBtn" class="tool-btn" title="Dictar por voz" onclick="toggleSpeechRecognition()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-            <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
-            <line x1="12" y1="19" x2="12" y2="23"></line>
-            <line x1="8" y1="23" x2="16" y2="23"></line>
-          </svg>
-        </button>
+        <button id="micBtn" class="mic-btn" onclick="toggleDictation()" title="Dictar por voz">🎤</button>
+        <textarea id="userInput" placeholder="Escribe tu mensaje aquí..." rows="1"></textarea>
         <button id="sendBtn" class="send-btn" onclick="handleSend()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="19" x2="12" y2="5"></line>
@@ -145,22 +125,51 @@
           </svg>
         </button>
       </div>
+      <div class="stats-counter" id="statsCounter">0 caracteres | 0 palabras | ~0 tokens</div>
     </div>
   </div>
 
   <script>
-    const API_KEY = "AIzaSyDuwhkqTBP_dP03RxBd0jHgZFReE6iFYWE";
+    const API_KEY = "AIzaSyDuwhkqTBP_dP03RxBd0jHgZFReE6iFYWE"; // Asegúrate de proteger esto en tu repo
     const MODEL_NAME = "gemini-3.5-flash-lite";
     let chatHistory = [];
-    let recognition = null;
-    let isListening = false;
-
     const chatBox = document.getElementById('chatBox');
     const userInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
-    const micBtn = document.getElementById('micBtn');
     const personaSelect = document.getElementById('personaSelect');
-    const tokenCounter = document.getElementById('tokenCounter');
+    const micBtn = document.getElementById('micBtn');
+
+    // --- VARIABLES DE VOZ ---
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition = null;
+    let isRecording = false;
+
+    if (SpeechRecognition) {
+      recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'es-VE'; // Configurado para acento venezolano
+
+      recognition.onresult = (event) => {
+        let finalTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            finalTranscript += event.results[i][0].transcript;
+          }
+        }
+        if (finalTranscript) {
+          const currentVal = userInput.value;
+          userInput.value = (currentVal ? currentVal + ' ' : '') + finalTranscript;
+          userInput.style.height = 'auto';
+          userInput.style.height = (userInput.scrollHeight) + 'px';
+        }
+      };
+      
+      recognition.onerror = (e) => {
+        console.error("Error de voz:", e);
+        stopDictation();
+      };
+    }
 
     const systemInstructions = {
       default: "Eres Argos, un asistente de IA empático, natural y conversacional. Actúa como un compañero inteligente dispuesto a escuchar y ayudar. Evita respuestas robóticas.",
@@ -171,22 +180,33 @@
       creative: "Eres Argos en modo Creador Creativo. Tu enfoque es la narrativa, la inspiración y la lluvia de ideas. Eres imaginativo y usas un lenguaje enriquecedor."
     };
 
-    // Función 3: Calculador de Tokens Estimados
-    function updateTokenCounter() {
-      let totalChars = 0;
-      chatHistory.forEach(msg => {
-        if (msg && msg.parts && msg.parts[0] && msg.parts[0].text) {
-          totalChars += msg.parts[0].text.length;
-        }
-      });
-      // Estimación estándar promedio: ~4 caracteres por token
-      const estimatedTokens = Math.round(totalChars / 4);
-      tokenCounter.textContent = `Tokens est: ~${estimatedTokens} (${totalChars} chars)`;
+    function updateStats() {
+      if (chatHistory.length === 0) {
+        document.getElementById('statsCounter').innerText = `0 caracteres | 0 palabras | ~0 tokens`;
+        return;
+      }
+      const fullText = chatHistory.map(msg => msg.parts[0].text).join(' ');
+      const chars = fullText.length;
+      const words = fullText.trim().split(/\s+/).filter(w => w.length > 0).length;
+      const tokens = Math.ceil(words * 1.33); // Estimación estándar de la industria
+      
+      document.getElementById('statsCounter').innerText = `${chars} caracteres | ${words} palabras | ~${tokens} tokens consumidos`;
     }
 
     function saveToLocalStorage() {
       localStorage.setItem('argos_chat_history', JSON.stringify(chatHistory));
-      updateTokenCounter();
+      updateStats();
+    }
+
+    // Nueva función para renderizar todo el historial (útil para la edición)
+    function renderAllMessages() {
+      chatBox.innerHTML = '';
+      if (chatHistory.length > 0) {
+        chatHistory.forEach((msg, index) => appendMessage(msg.role, msg.parts[0].text, false, index));
+      } else {
+        showWelcome();
+      }
+      updateStats();
     }
 
     function loadFromLocalStorage() {
@@ -196,8 +216,7 @@
           const history = JSON.parse(saved);
           if (history.length > 0) {
             chatHistory = history;
-            chatBox.innerHTML = '';
-            chatHistory.forEach((msg, index) => appendMessage(msg.role, msg.parts[0].text, false, index));
+            renderAllMessages();
           } else {
              showWelcome();
           }
@@ -207,15 +226,12 @@
       } else {
         showWelcome();
       }
-      updateTokenCounter();
     }
 
     function showWelcome() {
        chatBox.innerHTML = `
-        <div class="message model" data-index="0">
-          <div class="sender">
-            <div class="sender-left"><span class="sender-icon">A</span> Argos</div>
-          </div>
+        <div class="message model">
+          <div class="sender"> <span class="sender-icon">A</span> Argos </div>
           <div class="message-content">¡Hola! Soy Argos. Estoy aquí para escucharte, aprender contigo y ayudarte en lo que necesites. ¿De qué te gustaría hablar hoy?</div>
         </div>
       `;
@@ -225,8 +241,8 @@
       if(confirm("¿Deseas iniciar una nueva conversación y borrar el historial actual?")) {
         chatHistory = [];
         localStorage.removeItem('argos_chat_history');
-        showWelcome();
-        updateTokenCounter();
+        renderAllMessages();
+        if('speechSynthesis' in window) window.speechSynthesis.cancel();
       }
     }
 
@@ -249,8 +265,7 @@
           const importedHistory = JSON.parse(e.target.result);
           if (Array.isArray(importedHistory)) {
              chatHistory = importedHistory;
-             chatBox.innerHTML = '';
-             chatHistory.forEach((msg, index) => appendMessage(msg.role, msg.parts[0].text, false, index));
+             renderAllMessages();
              saveToLocalStorage();
              alert("Historial cargado con éxito.");
           }
@@ -259,6 +274,70 @@
         }
       };
       reader.readAsText(file);
+    }
+
+    // --- FUNCIONES DE VOZ Y DICTADO ---
+    function toggleDictation() {
+      if (!recognition) {
+        alert("Tu navegador no soporta reconocimiento de voz. Intenta usar Chrome, Edge o Safari.");
+        return;
+      }
+      if (isRecording) {
+        stopDictation();
+      } else {
+        recognition.start();
+        isRecording = true;
+        micBtn.classList.add('recording');
+      }
+    }
+
+    function stopDictation() {
+      if (recognition && isRecording) {
+        recognition.stop();
+        isRecording = false;
+        micBtn.classList.remove('recording');
+      }
+    }
+
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // Detener si ya está hablando
+        
+        // Limpiamos el texto de formato Markdown para que la lectura sea fluida
+        const cleanText = text
+          .replace(/```[\s\S]*?```/g, ' Aquí hay un bloque de código. ')
+          .replace(/[*_~`]/g, '')
+          .replace(/#/g, '');
+          
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.lang = 'es-VE'; // Acento nativo
+        utterance.rate = 1.05; // Ligeramente más rápido para que suene natural
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("Tu navegador no soporta síntesis de voz.");
+      }
+    }
+
+    // --- FUNCIÓN DE EDICIÓN ---
+    function editMessage(index) {
+      if (index === null || index === undefined) return;
+      
+      // Obtenemos el texto original
+      const msgText = chatHistory[index].parts[0].text;
+      
+      // Lo colocamos en el input
+      userInput.value = msgText;
+      userInput.style.height = 'auto';
+      userInput.style.height = (userInput.scrollHeight) + 'px';
+      userInput.focus();
+
+      // "Cortamos" el historial hasta ese mensaje (eliminando el mensaje a editar y todos los posteriores)
+      chatHistory = chatHistory.slice(0, index);
+      saveToLocalStorage();
+      
+      // Renderizamos el DOM de nuevo para reflejar el corte
+      renderAllMessages();
+      if('speechSynthesis' in window) window.speechSynthesis.cancel();
     }
 
     userInput.addEventListener('input', function() {
@@ -285,47 +364,54 @@
       return html;
     }
 
-    // Modificado para recibir un índice y renderizar los botones de acción
+    // Modificado para aceptar el índice (necesario para la edición)
     function appendMessage(role, text, save = true, index = null) {
       const msgDiv = document.createElement('div');
       msgDiv.className = `message ${role}`;
-      const msgIndex = index !== null ? index : chatHistory.length - 1;
-      msgDiv.setAttribute('data-index', msgIndex);
-
+      
       const senderDiv = document.createElement('div');
       senderDiv.className = 'sender';
-
       if (role === 'model') {
-        // Añadimos botón de Lectura (TTS)
-        senderDiv.innerHTML = `
-          <div class="sender-left"><span class="sender-icon">A</span> Argos</div>
-          <div class="sender-actions">
-            <button class="msg-action-icon" onclick="speakText('${encodeURIComponent(text)}')" title="Escuchar respuesta">🔊</button>
-          </div>
-        `;
+        senderDiv.innerHTML = `<span class="sender-icon">A</span> Argos`;
       } else {
-        senderDiv.innerHTML = `<span>Tú</span>`;
+        senderDiv.textContent = 'Tú';
       }
-
+      
       const contentDiv = document.createElement('div');
       contentDiv.className = 'message-content';
       contentDiv.innerHTML = formatText(text);
       
       msgDiv.appendChild(senderDiv);
       msgDiv.appendChild(contentDiv);
+      
+      // Contenedor de acciones dinámicas (Editar y Escuchar)
+      const actionsDiv = document.createElement('div');
+      actionsDiv.className = 'msg-actions';
+      
+      // El índice real es el que pasamos, o el último elemento de la lista si es nuevo
+      const msgIndex = index !== null ? index : (chatHistory.length > 0 ? chatHistory.length - 1 : 0);
 
-      // Función 2: Botón de Editar y Reenviar
       if (role === 'user') {
-        const actionsDiv = document.createElement('div');
-        actionsDiv.className = 'user-actions';
-        actionsDiv.innerHTML = `<button class="user-action-btn" onclick="editMessage(${msgIndex})">✏️ Editar y reenviar</button>`;
-        msgDiv.appendChild(actionsDiv);
+        const editBtn = document.createElement('button');
+        editBtn.className = 'msg-action-btn';
+        editBtn.innerHTML = '✏️ Editar';
+        editBtn.onclick = () => editMessage(msgIndex);
+        actionsDiv.appendChild(editBtn);
+      } else if (role === 'model') {
+        const speakBtn = document.createElement('button');
+        speakBtn.className = 'msg-action-btn';
+        speakBtn.innerHTML = '🔊 Escuchar';
+        speakBtn.onclick = () => speakText(text);
+        actionsDiv.appendChild(speakBtn);
       }
-
+      
+      msgDiv.appendChild(actionsDiv);
       chatBox.appendChild(msgDiv);
+      
       setTimeout(() => {
         chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
       }, 50);
+      
       if (save) saveToLocalStorage();
       return msgDiv;
     }
@@ -335,7 +421,7 @@
       msgDiv.className = 'message model';
       msgDiv.id = 'loadingIndicator';
       msgDiv.innerHTML = `
-        <div class="sender"><div class="sender-left"><span class="sender-icon">A</span> Argos</div></div>
+        <div class="sender"><span class="sender-icon">A</span> Argos</div>
         <div class="typing-container">
           <span>Argos está escribiendo</span>
           <div class="typing-indicator">
@@ -352,109 +438,22 @@
       if (loader) loader.remove();
     }
 
-    // --- Función 1: Voz (Text-to-Speech y Dictado) ---
-    function speakText(encodedText) {
-      const text = decodeURIComponent(encodedText);
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'es-ES';
-        window.speechSynthesis.speak(utterance);
-      } else {
-        alert("Tu navegador no soporta la lectura en voz alta.");
-      }
-    }
-
-    function toggleSpeechRecognition() {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) {
-        alert("Tu navegador no soporta el reconocimiento de voz o está bloqueado por permisos (como suele pasar en Google Sites).");
-        return;
-      }
-
-      if (isListening) {
-        if (recognition) recognition.stop();
-        return;
-      }
-
-      recognition = new SpeechRecognition();
-      recognition.lang = 'es-ES';
-      recognition.interimResults = true;
-      recognition.continuous = false;
-
-      recognition.onstart = () => {
-        isListening = true;
-        micBtn.classList.add('listening');
-        userInput.placeholder = "Escuchando...";
-      };
-
-      recognition.onresult = (event) => {
-        let transcript = '';
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          transcript += event.results[i][0].transcript;
-        }
-        userInput.value = transcript;
-        userInput.style.height = '38px';
-        userInput.style.height = (userInput.scrollHeight) + 'px';
-      };
-
-      recognition.onerror = (e) => {
-        console.error(e);
-        stopListeningState();
-      };
-
-      recognition.onend = () => {
-        stopListeningState();
-      };
-
-      try {
-          recognition.start();
-      } catch (e) {
-          alert("Error al iniciar el micrófono. Si estás en Google Sites, los permisos de micrófono probablemente están bloqueados por seguridad.");
-          stopListeningState();
-      }
-    }
-
-    function stopListeningState() {
-      isListening = false;
-      micBtn.classList.remove('listening');
-      userInput.placeholder = "Escribe tu mensaje o usa el micrófono...";
-    }
-
-    // --- Función 2: Lógica de Edición y Reenvío ---
-    function editMessage(index) {
-      const currentText = chatHistory[index].parts[0].text;
-      const newText = prompt("Edita tu mensaje:", currentText);
-      if (newText === null || newText.trim() === "" || newText === currentText) return;
-
-      // Cortar el historial hasta este punto
-      chatHistory = chatHistory.slice(0, index);
-      
-      // Limpiar y re-renderizar todo el chat
-      chatBox.innerHTML = '';
-      if (chatHistory.length === 0) {
-        showWelcome();
-      } else {
-        chatHistory.forEach((msg, idx) => appendMessage(msg.role, msg.parts[0].text, false, idx));
-      }
-
-      // Procesar el nuevo texto
-      userInput.value = newText;
-      handleSend();
-    }
-
     async function handleSend() {
       const text = userInput.value.trim();
       if (!text) return;
       
-      const userMsgIndex = chatHistory.length;
-      appendMessage('user', text, true, userMsgIndex);
+      // Cortamos el dictado y la síntesis si se envía un mensaje
+      stopDictation();
+      if('speechSynthesis' in window) window.speechSynthesis.cancel();
+      
       chatHistory.push({ role: 'user', parts: [{ text: text }] });
+      appendMessage('user', text, true, chatHistory.length - 1);
       
       userInput.value = '';
       userInput.style.height = '38px';
       sendBtn.disabled = true;
       personaSelect.disabled = true;
+      
       showTypingIndicator();
       
       try {
@@ -475,19 +474,22 @@
         const data = await response.json();
         const modelText = data.candidates[0].content.parts[0].text;
         
-        const modelMsgIndex = chatHistory.length;
         chatHistory.push({ role: 'model', parts: [{ text: modelText }] });
-        appendMessage('model', modelText, true, modelMsgIndex);
+        appendMessage('model', modelText, true, chatHistory.length - 1);
+        
+        // Actualizamos los tokens al recibir respuesta
+        updateStats();
+
       } catch (error) {
         removeTypingIndicator();
-        appendMessage('model', 'Lo siento, tuve un problema al conectar con el servicio.');
+        appendMessage('model', 'Lo siento, tuve un problema al procesar tu solicitud.');
       } finally {
         sendBtn.disabled = false;
         personaSelect.disabled = false;
         if (window.innerWidth > 600) userInput.focus();
       }
     }
-
+    
     loadFromLocalStorage();
   </script>
 </body>
