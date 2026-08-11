@@ -19,7 +19,8 @@
     
     .brand-container { display: flex; flex-direction: column; align-items: center; }
     .brand { font-weight: 500; font-size: 15px; color: #a1a1aa; letter-spacing: 0.3px; text-align: center; }
-    .token-counter { font-size: 10px; color: #71717a; text-align: center; }
+    /* Nuevo estilo para el contador de tokens */
+    .token-counter { font-size: 10px; color: #71717a; text-align: center; margin-top: 2px; }
     
     .header-actions { display: flex; align-items: center; gap: 8px; }
     
@@ -40,6 +41,8 @@
     .message { display: flex; flex-direction: column; line-height: 1.6; font-size: 15px; word-break: break-word; animation: fadeIn 0.3s ease-out forwards; position: relative; }
     .message.user { align-self: flex-end; background-color: #27272a; color: #f4f4f5; padding: 12px 18px; border-radius: 18px; max-width: 75%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     .message.model { align-self: flex-start; background-color: transparent; color: #e4e4e7; padding: 4px 0; max-width: 100%; width: 100%; }
+    
+    /* Estilos actualizados para cabecera de mensaje y botones de acción */
     .message .sender { font-size: 13px; color: #a1a1aa; margin-bottom: 6px; font-weight: 500; display: flex; align-items: center; justify-content: space-between; gap: 6px; }
     .message.user .sender { display: none; }
     .sender-left { display: flex; align-items: center; gap: 6px; }
@@ -47,13 +50,13 @@
     .sender-actions:hover { opacity: 1; }
     .msg-action-icon { background: none; border: none; color: #a1a1aa; cursor: pointer; font-size: 12px; padding: 2px 4px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; }
     .msg-action-icon:hover { background-color: #3f3f46; color: #e4e4e7; }
-    
     .sender-icon { width: 20px; height: 20px; background-color: #d4d4d8; color: #18181b; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 12px; font-weight: bold; flex-shrink: 0; }
     
     .message pre { background-color: #09090b; padding: 14px; overflow-x: auto; margin: 12px 0; border-radius: 8px; border: 1px solid #27272a; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13.5px; }
     .message code { background-color: #27272a; padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13.5px; color: #38bdf8; }
     .message pre code { background-color: transparent; padding: 0; color: #e4e4e7; }
     
+    /* Botón de editar para el usuario */
     .user-actions { display: flex; justify-content: flex-end; gap: 6px; margin-top: 4px; font-size: 11px; opacity: 0.6; }
     .user-actions:hover { opacity: 1; }
     .user-action-btn { background: none; border: none; color: #a1a1aa; cursor: pointer; font-size: 11px; text-decoration: underline; }
@@ -66,6 +69,7 @@
     textarea#userInput { flex: 1; background-color: transparent; border: none; padding: 6px 8px; color: #f4f4f5; font-size: 15px; resize: none; height: 38px; max-height: 160px; outline: none; font-family: inherit; line-height: 1.5; }
     textarea#userInput::placeholder { color: #71717a; }
     
+    /* Botones de entrada (Microfono y Enviar) */
     .tool-btn { background-color: #3f3f46; color: #a1a1aa; border: none; border-radius: 8px; width: 34px; height: 34px; cursor: pointer; transition: background-color 0.2s, color 0.2s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-bottom: 2px; }
     .tool-btn:hover { background-color: #52525b; color: #e4e4e7; }
     .tool-btn.listening { background-color: #ef4444; color: #fff; animation: pulse 1.5s infinite; }
@@ -125,6 +129,7 @@
     <div class="input-wrapper">
       <div class="input-area">
         <textarea id="userInput" placeholder="Escribe tu mensaje o usa el micrófono..." rows="1"></textarea>
+        <!-- Botón de Micrófono -->
         <button id="micBtn" class="tool-btn" title="Dictar por voz" onclick="toggleSpeechRecognition()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
@@ -166,6 +171,7 @@
       creative: "Eres Argos en modo Creador Creativo. Tu enfoque es la narrativa, la inspiración y la lluvia de ideas. Eres imaginativo y usas un lenguaje enriquecedor."
     };
 
+    // Función 3: Calculador de Tokens Estimados
     function updateTokenCounter() {
       let totalChars = 0;
       chatHistory.forEach(msg => {
@@ -173,7 +179,7 @@
           totalChars += msg.parts[0].text.length;
         }
       });
-      // Estimación estándar: ~4 caracteres por token
+      // Estimación estándar promedio: ~4 caracteres por token
       const estimatedTokens = Math.round(totalChars / 4);
       tokenCounter.textContent = `Tokens est: ~${estimatedTokens} (${totalChars} chars)`;
     }
@@ -279,6 +285,7 @@
       return html;
     }
 
+    // Modificado para recibir un índice y renderizar los botones de acción
     function appendMessage(role, text, save = true, index = null) {
       const msgDiv = document.createElement('div');
       msgDiv.className = `message ${role}`;
@@ -289,6 +296,7 @@
       senderDiv.className = 'sender';
 
       if (role === 'model') {
+        // Añadimos botón de Lectura (TTS)
         senderDiv.innerHTML = `
           <div class="sender-left"><span class="sender-icon">A</span> Argos</div>
           <div class="sender-actions">
@@ -296,7 +304,6 @@
           </div>
         `;
       } else {
-        // Para el usuario, añadimos botón de editar
         senderDiv.innerHTML = `<span>Tú</span>`;
       }
 
@@ -307,6 +314,7 @@
       msgDiv.appendChild(senderDiv);
       msgDiv.appendChild(contentDiv);
 
+      // Función 2: Botón de Editar y Reenviar
       if (role === 'user') {
         const actionsDiv = document.createElement('div');
         actionsDiv.className = 'user-actions';
@@ -344,23 +352,23 @@
       if (loader) loader.remove();
     }
 
-    // Funciones de Voz (Text-to-Speech y Dictado)
+    // --- Función 1: Voz (Text-to-Speech y Dictado) ---
     function speakText(encodedText) {
       const text = decodeURIComponent(encodedText);
       if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel(); // Detener lectura previa
+        window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'es-ES';
         window.speechSynthesis.speak(utterance);
       } else {
-        alert("Tu navegador no soporta la síntesis de voz.");
+        alert("Tu navegador no soporta la lectura en voz alta.");
       }
     }
 
     function toggleSpeechRecognition() {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SpeechRecognition) {
-        alert("Tu navegador no soporta el reconocimiento de voz por micrófono.");
+        alert("Tu navegador no soporta el reconocimiento de voz o está bloqueado por permisos (como suele pasar en Google Sites).");
         return;
       }
 
@@ -390,7 +398,8 @@
         userInput.style.height = (userInput.scrollHeight) + 'px';
       };
 
-      recognition.onerror = () => {
+      recognition.onerror = (e) => {
+        console.error(e);
         stopListeningState();
       };
 
@@ -398,7 +407,12 @@
         stopListeningState();
       };
 
-      recognition.start();
+      try {
+          recognition.start();
+      } catch (e) {
+          alert("Error al iniciar el micrófono. Si estás en Google Sites, los permisos de micrófono probablemente están bloqueados por seguridad.");
+          stopListeningState();
+      }
     }
 
     function stopListeningState() {
@@ -407,16 +421,16 @@
       userInput.placeholder = "Escribe tu mensaje o usa el micrófono...";
     }
 
-    // Edición de mensajes del usuario
+    // --- Función 2: Lógica de Edición y Reenvío ---
     function editMessage(index) {
       const currentText = chatHistory[index].parts[0].text;
       const newText = prompt("Edita tu mensaje:", currentText);
       if (newText === null || newText.trim() === "" || newText === currentText) return;
 
-      // Cortar el historial hasta este punto (eliminando esta pregunta y las respuestas posteriores)
+      // Cortar el historial hasta este punto
       chatHistory = chatHistory.slice(0, index);
       
-      // Re-renderizar la caja de chat visualmente
+      // Limpiar y re-renderizar todo el chat
       chatBox.innerHTML = '';
       if (chatHistory.length === 0) {
         showWelcome();
@@ -424,7 +438,7 @@
         chatHistory.forEach((msg, idx) => appendMessage(msg.role, msg.parts[0].text, false, idx));
       }
 
-      // Establecer el nuevo texto en el input y enviarlo automáticamente
+      // Procesar el nuevo texto
       userInput.value = newText;
       handleSend();
     }
